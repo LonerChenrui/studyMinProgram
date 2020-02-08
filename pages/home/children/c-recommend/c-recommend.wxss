@@ -1,0 +1,20 @@
+/* pages/home/children/recommend/c-recommend.wxss */
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 20rpx solid #eee; 
+}
+.container-item {
+  text-align: center;
+}
+.container-item image {
+  width: 160rpx;
+  height: 140rpx;
+}
+.container-item view {
+  font-size: 28rpx;
+  color: #666;
+  margin: 10rpx 0;
+}

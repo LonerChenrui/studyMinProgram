@@ -1,0 +1,16 @@
+<!--pages/home/children/c-tab-control/c-tab-control.wxml-->
+<view class="tabControl">
+  <block 
+    wx:for="{{tabControlTitle}}" 
+    wx:key="idx"
+    wx:for-item="element"
+    wx:for-index="idx"
+   >
+    <view class="tabControlItem" 
+      bind:tap="controlClick"
+      data-idx="{{idx}}"
+    >
+      <text class="{{currentIndex == idx ? 'active' : ''}}">{{element}}</text>
+    </view>
+  </block>
+</view>

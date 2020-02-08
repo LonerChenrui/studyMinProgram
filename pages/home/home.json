@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "c-swiper": "/components/c-swiper/c-swiper",
+    "c-recommend": "/pages/home/children/c-recommend/c-recommend",
+    "c-feature": "/pages/home/children/c-feature/c-feature",
+    "c-tab-control": "/pages/home/children/c-tab-control/c-tab-control",
+    "c-goods": "/components/c-goods/c-goods"
+  },
+  "navigationBarTitleText": "home"
 }

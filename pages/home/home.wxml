@@ -1,2 +1,21 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 轮播图 -->
+<c-swiper bannerList="{{bannerList}}"/>
+
+<!-- 推荐 -->
+<c-recommend recommend="{{recommend}}"/>
+
+<!-- 本周流行 -->
+<c-feature/>
+
+<!-- tabcontrol -->
+<c-tab-control 
+  tabControlTitle="{{tabControlTitle}}"
+  bind:goodsTypeEvent="goodsTypeEvent"
+/>
+
+<!-- 商品分类 -->
+<c-goods goods="{{goods[goodsType].list}}"/>
+
+
+

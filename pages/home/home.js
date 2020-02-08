@@ -1,66 +1,60 @@
 // pages/home/home.js
+import { 
+  getHomeMuilt, 
+  getGoodsData
+} from '../../servers/home.js'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    bannerList: [],
+    recommend: [],
+    tabControlTitle: ["流行", "新款","精选"],
+    goods: {
+      pop: {page: 0,list:[]},
+      new: {page: 0,list:[]},
+      sell: {page: 0,list:[]}
+    },
+    goodsType: 'pop',
+    goodsTypeArray: ['pop', 'new', 'sell']
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    // 轮播、推荐
+    this.getHomeMuilt();
+    // 商品数据
+    this.getGoodsData('pop');
+    this.getGoodsData('new');
+    this.getGoodsData('sell');
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //---------------网络请求
+  getHomeMuilt() {
+    getHomeMuilt().then(res => {
+      let result = res.data.data;
+      this.setData({
+        bannerList: result.banner.list,
+        recommend: result.recommend.list
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getGoodsData(type) {
+    let page = this.data.goods[type].page + 1;
+    getGoodsData(type, page).then(res => {
+      let list = res.data.data.list;
+      let vldValue = this.data.goods[type].list;
+      vldValue.push(...list)
+      this.setData({
+        [`goods.${type}.page`]: page,
+        [`goods.${type}.list`]: vldValue
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //-------------- 事件监听函数
+  goodsTypeEvent(e) {
+    this.setData({
+      goodsType: this.data.goodsTypeArray[e.detail.currentIndex]
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onReachBottom() {
+    console.log()
+    this.getGoodsData(this.data.goodsType)
   }
 })

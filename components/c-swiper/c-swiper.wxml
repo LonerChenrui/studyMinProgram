@@ -1,0 +1,21 @@
+<!--components/c-swiper/c-swiper.wxml-->
+<view class="swiper">
+  <swiper 
+      indicator-dots
+      autoplay
+      duration="1000"
+      circular
+      indicator-active-color="#ffffff"
+      interval="3000"
+    >
+    <block wx:for="{{bannerList}}" wx:key="title">
+      <swiper-item>
+        <image 
+          class="swiper-item-image" 
+          src="{{item.image}}"
+          mode="widthFix"
+        />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/home/children/recommend/c-recommend.wxml-->
+<view class="container">
+  <block wx:for="{{recommend}}" wx:key="title">
+    <view class="container-item">
+      <image src="{{item.image}}" mode="widthFix"/>
+      <view>{{item.title}}</view>
+    </view> 
+  </block>
+</view>
+

@@ -1,0 +1,19 @@
+<!--components/c-goods/c-goods.wxml-->
+<view class="goods">
+  <block 
+    wx:for="{{goods}}"
+    wx:for-item="ele" 
+    wx:for-index= "idx"
+    wx:key="title"
+  >
+    <view class="goods-item">
+      <image class="goods-image" src="{{ele.show.img}}" mode="widthFix"/>
+      <view class="title">{{ele.title}}</view>
+      <view class="item-bottom">
+        <view class="price">${{ele.price}}</view>
+        <image src="/assets/images/common/favor.png" mode="widthFix"/>
+        <view class="cfav">{{ele.cfav}}</view>
+      </view>
+    </view> 
+  </block>
+</view>
